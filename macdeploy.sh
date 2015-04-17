@@ -43,8 +43,8 @@ echo "PostgreSQL Database Modeler Project - pgmodeler.com.br"
 echo "Copyright 2006-2015 Raphael A. Silva <raphael@pgmodeler.com.br>"
 
 # Identifying System Qt version
-if [ -e "$QT_ROOT/bin/qmake" ]; then
-  QT_VER=`$QT_ROOT/bin/qmake --version | grep -m 1 -o '[0-9].[0-9].[0-9]'`
+if [ -e "/Users/vanxrice/Qt/5.3/clang_64/bin/qmake" ]; then
+  QT_VER=`/Users/vanxrice/Qt/5.3/clang_64/bin/qmake --version | grep -m 1 -o '[0-9].[0-9].[0-9]'`
   QT_VER=${QT_VER:0:5}
 fi
 
@@ -77,7 +77,7 @@ rm -r $INSTALL_ROOT/* &> $LOG
 make distclean  >> $LOG 2>&1
 
 echo "Running qmake..."
-$QT_ROOT/bin/qmake $QMAKE_ARGS  >> $LOG 2>&1
+/Users/vanxrice/Qt/5.3/clang_64/bin/qmake $QMAKE_ARGS  >> $LOG 2>&1
 
 if [ $? -ne 0 ]; then
   echo
@@ -109,7 +109,7 @@ fi
 echo "Packaging installation..."
 
 # Deploy the Qt libraries onto app bundle
-$QT_ROOT/bin/macdeployqt $BUNDLE >> $LOG 2>&1
+/Users/vanxrice/Qt/5.3/clang_64/bin/macdeployqt $BUNDLE >> $LOG 2>&1
 
 # Creates an empty dmg file named
 cp installer/macosx/installer_icon.icns $INSTALL_ROOT/.VolumeIcon.icns >> $LOG 2>&1
